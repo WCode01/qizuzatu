@@ -1,0 +1,577 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --kazakh-blue: #1e3a8a;
+    --kazakh-gold: #d4af37;
+    --kazakh-red: #dc2626;
+    --cream: #fef3c7;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Орнамент фон */
+.pattern-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='%23d4af37'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Навигация */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--kazakh-gold);
+    letter-spacing: 2px;
+}
+ы
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--kazakh-gold);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--kazakh-gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Главный контейнер */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 50px;
+}
+
+/* Шапка */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease;
+}
+
+.ornament {
+    font-size: 2rem;
+    color: var(--kazakh-gold);
+    margin: 20px 0;
+    letter-spacing: 10px;
+}
+
+h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, var(--kazakh-gold) 100%);
+    
+    /* МАҢЫЗДЫ: Екеуін де жазу керек! */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 2rem; }
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.photo-section {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    animation: fadeIn 1.5s ease;
+}
+
+.photo-frame {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    border: 3px solid var(--kazakh-gold);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.photo-frame:hover {
+    transform: scale(1.02);
+}
+
+/* МАҢЫЗДЫ: Фото рамкаға сыйып, бүтін көрінуі үшін */
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Фото рамкаға сыйып, қиылып кетпейді */
+    object-position: center; /* Орталау */
+    display: block;
+}
+
+/* Таймер */
+.countdown-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 50px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease;
+}
+
+.countdown-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--kazakh-gold);
+    margin-bottom: 30px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: rgba(30, 58, 138, 0.5);
+    border: 1px solid var(--kazakh-gold);
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 100px;
+}
+
+.time-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--kazakh-gold);
+    display: block;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Текст приглашения */
+.invitation-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--kazakh-gold);
+    border-right: 4px solid var(--kazakh-gold);
+    animation: fadeIn 2s ease;
+}
+
+.invitation-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--kazakh-gold);
+    margin-bottom: 20px;
+}
+
+.invitation-text p {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+}
+
+.names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--kazakh-gold);
+    margin: 30px 0;
+    font-weight: 600;
+}
+
+/* Кнопки RSVP */
+.rsvp-section {
+    text-align: center;
+    margin: 60px 0;
+    animation: fadeInUp 1.2s ease;
+}
+
+.rsvp-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.rsvp-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.rsvp-btn {
+    padding: 20px 60px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp-yes {
+    background: linear-gradient(135deg, var(--kazakh-gold), #f59e0b);
+    color: #0f172a;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.rsvp-no {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.rsvp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.rsvp-yes:hover {
+    background: linear-gradient(135deg, #f59e0b, var(--kazakh-gold));
+}
+
+.rsvp-no:hover {
+    border-color: var(--kazakh-red);
+    color: var(--kazakh-red);
+}
+
+/* Детали мероприятия */
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.detail-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--kazakh-gold);
+}
+
+.detail-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    color: var(--kazakh-gold);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.detail-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+
+.social-section {
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px 20px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    animation: fadeInUp 1s ease;
+}
+
+.social-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--kazakh-gold);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+/* Instagram - градиент */
+.social-link.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+}
+
+/* WhatsApp - жасыл */
+.social-link.whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+/* TikTok - қара/қызыл */
+.social-link.tiktok {
+    background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover эффектілері */
+.social-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.social-link:hover svg {
+    transform: rotate(360deg);
+}
+
+/* Градиент анимация */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Мобильді адаптация */
+@media (max-width: 480px) {
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-link {
+        width: 200px;
+        justify-content: center;
+    }
+}
+
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 80px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 2px solid var(--kazakh-gold);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    animation: scaleIn 0.3s;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.modal h3 {
+    color: var(--kazakh-gold);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: var(--kazakh-gold);
+    color: #0f172a;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .photo-frame {
+        width: 280px;
+        height: 360px;
+    }
+
+    .time-number {
+        font-size: 2rem;
+    }
+
+    .time-box {
+        min-width: 70px;
+        padding: 15px;
+    }
+}
